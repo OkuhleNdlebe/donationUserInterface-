@@ -1,0 +1,38 @@
+<div class="bg-info bg-opacity-25">
+  <h1 style="text-align: center; color: dimgray; height: 60px"><b>Welcome</b> {{user.firstName}} {{user.lastName}}</h1>
+</div>
+
+<div class="container-fluid m-2">
+  <button class="btn btn-outline-danger" (click)="logout()">logout</button>
+  <button class="btn btn-outline-warning" (click)="goToDonations()">view donations</button>
+</div>
+
+<div>
+  <ng-container class="form-body">
+    <form #donationForm="ngForm" (ngSubmit)="createDonation(donationForm)" style="margin: 5% auto; width:450px;">
+      <label><h2>Donate</h2></label>
+
+      <div class="form-group" style="margin-top: 10px">
+        <label>donation type</label>
+        <br>
+        <select type="text" required
+                name="email" class="form-control" [(ngModel)]="donationModel.donationType" style="width: 50%">
+          <option>Money</option>
+          <option>Groceries</option>
+          <option>Any</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>details</label>
+        <br>
+        <textarea type="text" required
+                  name="details" class="form-control" [(ngModel)]="donationModel.details" style="width: 50%">
+        </textarea>
+      </div>
+      <button class="btn btn-warning" [disabled]="donationModel.details == '' || donationModel.donationType == ''" style="margin-top: 15px" type="submit">create</button>
+      <hr>
+    </form>
+  </ng-container>
+
+</div>

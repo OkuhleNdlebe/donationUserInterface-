@@ -1,0 +1,142 @@
+
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)" style="margin: 11% auto; width:450px;">
+    <label><h1>LOGIN</h1></label>
+
+    <div class="form-group" style="margin-top: 20px">
+      <label>email</label>
+      <br>
+      <input type="email" required
+             name="email" class="form-control" [(ngModel)]="loginModel.email" style="width: 70%">
+    </div>
+
+    <div class="form-group">
+      <label>password</label>
+      <br>
+      <input type="password" required name="password" class="form-control"
+             [(ngModel)]="loginModel.password" style="width: 70%">
+    </div>
+
+    <div class="form-check form-check-inline">
+      <label class="form-check-label" for="donor">donor</label>
+      <input class="form-check-input" type="radio" name="userType" id="donor" (click)="loginModel.accountType = 'donor'">
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="userType" id="student" (click)="loginModel.accountType = 'student'">
+      <label class="form-check-label" for="student">student</label>
+    </div>
+
+    <div>
+      <button class="btn btn-outline-primary" style="margin-top: 15px" [disabled]="loginModel.email == '' || loginModel.password == '' ||
+    loginModel.accountType == ''"  type="submit">login</button>
+    </div>
+
+    <hr>
+    <div><small>to register click <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">here</a></small></div>
+
+    <div style="margin-top: 50px">
+      <div class="alert alert-success" role="alert" *ngIf="success != ''">
+        {{success}}
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngIf="error != ''">
+        {{error}}
+      </div>
+    </div>
+
+  </form>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registration</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body row">
+        <div class="col-md-7">
+          <form style="width: 90%">
+            <h3>User info</h3>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">donor</label>
+              <input class="form-check-input" type="radio" name="userType" value="donor" [(ngModel)]="regModel.type">
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="userType" value="student" [(ngModel)]="regModel.type">
+              <label class="form-check-label">student</label>
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+              <label>firstname</label>
+              <br>
+              <input type="text" required name="firstname" class="form-control" style="width: 80%"
+                     [(ngModel)]="regModel.firstname">
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+              <label>lastname</label>
+              <br>
+              <input type="text" required name="lastname" class="form-control" style="width: 80%"
+                     [(ngModel)]="regModel.lastname">
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+              <label>email</label>
+              <br>
+              <input type="email" required name="email" class="form-control" email="true" style="width: 80%"
+                     [(ngModel)]="regModel.email">
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+              <label>password</label>
+              <br>
+              <input type="password" required name="password" class="form-control" style="width: 80%"
+                     [(ngModel)]="regModel.password">
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+              <label>confirm password</label>
+              <br>
+              <input type="password" required name="confirm" class="form-control" style="width: 80%"
+                     [(ngModel)]="regModel.confirm">
+            </div>
+
+          </form>
+        </div>
+
+        <div class="col-md-5">
+          <form>
+            <h3>Address</h3>
+
+            <div class="form-group" style="margin-top: 20px">
+              <label>postal code</label>
+              <br>
+              <input type="number" required name="code" class="form-control" [(ngModel)]="regModel.code">
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+              <label>street name</label>
+              <br>
+              <input type="text" required name="street" class="form-control" [(ngModel)]="regModel.streetname">
+            </div>
+
+            <div class="form-group" style="margin-top: 5px">
+              <label>street number</label>
+              <br>
+              <input type="text" required name="number" class="form-control" [(ngModel)]="regModel.streetnumber">
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!isValidUser()" (click)="register()" class="btn btn-outline-warning" data-bs-dismiss="modal">Register</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>

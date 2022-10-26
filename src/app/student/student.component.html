@@ -1,0 +1,30 @@
+<div class="bg-info bg-opacity-95">
+  <h1 style="text-align: center; color: dimgray; height: 60px"><b>Hi</b> {{user.firstName}} {{user.lastName}}</h1>
+</div>
+
+<div class="container-fluid m-2">
+  <button class="btn btn-outline-danger" (click)="logout()">logout</button>
+  <button class="btn btn-outline-warning" (click)="goToRecords()">view records</button>
+</div>
+
+<ng-container>
+  <ng-container style="margin: 50% auto; width:350px;">
+    <form  #parcelRequestForm="ngForm" (ngSubmit)="requestParcel(parcelRequestForm)" style="margin: 2% auto; width:450px;">
+      <h3>Request a Parcel</h3>
+
+      <div class="form-group" style="margin-top: 10px">
+        <label>donation type</label>
+        <br>
+        <select type="text" required name="donationType" class="form-control"
+                [(ngModel)]="parcelRequestModel.donationType" style="width: 50%">
+          <option>Money</option>
+          <option>Groceries</option>
+          <option>Any</option>
+        </select>
+      </div>
+      <button class="btn btn-warning" [disabled]="parcelRequestModel.donationType == ''" style="margin-top: 15px" type="submit">request</button>
+      <hr>
+    </form>
+  </ng-container>
+
+</ng-container>
