@@ -1,7 +1,14 @@
 # DonationUI
 
-This project was generated with [Angul ar CLI](https://github.com/angular/angular-cli) version 14.2.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+This application is made by :
+@Okuhle Ndlebe (The Group Lead, full stack)
+@Lukhona Tetyana (Secretary, full stack)
+@Bokang Molaoa (The app designer full stack)
+@Justin Nkuna (The app designer for frontend and backend)
+@Xola Mngeni (The full stack developer)
 
+Enjoy our application 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
